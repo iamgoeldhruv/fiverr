@@ -1,25 +1,16 @@
-const mysql = require("mysql")
+const mysql = require("mysql");
 
-
-function connectToDatabase(){
-
-
-var connection=mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"dhruv12345",
-    database:"chatapp",
-
-
-
-})
-connection.connect(function (err) {
-   if(err){
-       console.log("error occurred while connecting",err.message);
-   }
-   else{
-       console.log("connection created with Mysql successfully");
-   }
+// Create and export the connection pool directly
+const connectionPool = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "dhruv12345",
+  database: "chatapp",
 });
-}
-module.exports=connectToDatabase
+
+connectionPool.getConnection((err, connection) => {
+  if (err) throw err;
+  console.log("DB connected successful: " + connection.threadId);
+});
+
+module.exports = connectionPool;
