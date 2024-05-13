@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoute');
 const loginRoute=require('./routes/loginRoute');
+const getMessageRoute=require('./routes/getmessages');
 
 
 
@@ -19,6 +20,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use('/api/users', userRoutes);
 app.use('/api/users', loginRoute);
+app.use('/api', getMessageRoute);
+ 
  
  
 
