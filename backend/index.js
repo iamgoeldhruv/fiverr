@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoute');
 const loginRoute=require('./routes/loginRoute');
 const getMessageRoute=require('./routes/getmessages');
+const getUserRoute=require('./routes/getUserRoute');
 
 
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json())
 app.use('/api/users', userRoutes);
 app.use('/api/users', loginRoute);
 app.use('/api', getMessageRoute);
+app.use('/api/users',getUserRoute);
  
  
  
